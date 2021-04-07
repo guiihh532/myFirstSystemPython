@@ -44,7 +44,7 @@
       <x>0</x>
       <y>50</y>
       <width>551</width>
-      <height>511</height>
+      <height>491</height>
      </rect>
     </property>
     <property name="font">
@@ -57,19 +57,95 @@
     <property name="styleSheet">
      <string notr="true">background-color: rgb(117, 107, 36);</string>
     </property>
+    <property name="textElideMode">
+     <enum>Qt::ElideRight</enum>
+    </property>
+    <property name="verticalScrollMode">
+     <enum>QAbstractItemView::ScrollPerPixel</enum>
+    </property>
+    <property name="gridStyle">
+     <enum>Qt::NoPen</enum>
+    </property>
+    <column>
+     <property name="text">
+      <string>ID</string>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Código</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Discrição</string>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Preço</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Categoria</string>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+    </column>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>550</y>
+      <width>281</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Exportar PDF</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>550</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(239, 41, 41);</string>
+    </property>
+    <property name="text">
+     <string>Excluir</string>
+    </property>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>552</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionExportar_PDF">
+   <property name="text">
+    <string>Exportar PDF</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
