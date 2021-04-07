@@ -6,22 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>443</width>
-    <height>461</height>
+    <width>552</width>
+    <height>599</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Tela Cadastro</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(118, 86, 114);</string>
+   <string notr="true">background-color: rgb(169, 155, 52);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>0</y>
+      <x>190</x>
+      <y>-10</y>
       <width>161</width>
       <height>51</height>
      </rect>
@@ -38,13 +38,33 @@
      <string>Lista de Produtos</string>
     </property>
    </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>50</y>
+      <width>551</width>
+      <height>511</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>13</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(117, 107, 36);</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>443</width>
+     <width>552</width>
      <height>22</height>
     </rect>
    </property>

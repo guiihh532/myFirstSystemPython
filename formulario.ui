@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Tela Principal</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(52, 101, 164);
@@ -225,7 +225,7 @@ background-color: rgb(173, 127, 168);</string>
      <rect>
       <x>40</x>
       <y>350</y>
-      <width>141</width>
+      <width>131</width>
       <height>41</height>
      </rect>
     </property>
