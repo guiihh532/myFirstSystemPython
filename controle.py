@@ -2,6 +2,8 @@ from PyQt5 import uic,QtWidgets
 import mysql.connector
 from reportlab.pdfgen import canvas
 
+valor_idd = 0
+
 banco = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -10,8 +12,7 @@ banco = mysql.connector.connect(
 )
 
 def editar_dados():
-    print("teste")
-    tela_editar.show()
+    global valor_idd
     linha = segunda_tela.tableWidget.currentRow()
 
     cursor = banco.cursor()
@@ -20,6 +21,9 @@ def editar_dados():
     valor_id = dados_lidos[linha][0]
     cursor.execute("SELECT * FROM produtos WHERE id="+ str(valor_id))
     produto = cursor.fetchall()
+    tela_editar.show()
+
+    valor_idd = valor_id
 
     tela_editar.lineEdit.setText(str(produto[0][0]))
     tela_editar.lineEdit_2.setText(str(produto[0][1]))
@@ -27,9 +31,21 @@ def editar_dados():
     tela_editar.lineEdit_4.setText(str(produto[0][3]))
     tela_editar.lineEdit_5.setText(str(produto[0][4]))
 
-    
-    print(produto[0][2])
 
+
+def salvar_dados_editados():
+    #Pega numero do ID
+    global valor_idd
+    codigo = tela_editar.lineEdit_2.text()
+    descricao = tela_editar.lineEdit_3.text()
+    preco = tela_editar.lineEdit_4.text() 
+    categoria = tela_editar.lineEdit_5.text()
+    #Atualizando os dados no banco
+    cursor = banco.cursor()
+    cursor.execute("UPDATE produtos SET codigo = '{}', descricao = '{}', preco = '{}', categoria = '{}' WHERE id = {}".format(codigo, descricao, preco, categoria, valor_idd))
+    #Atualizar as janelas
+    tela_editar.close()
+    chama_segunda_tela()
 
 def excluir_dados():
     linha = segunda_tela.tableWidget.currentRow()
@@ -123,8 +139,7 @@ def chama_segunda_tela() :
     for i in range(0, len(dados_lidos)):
         for j in range (0, 5):
             segunda_tela.tableWidget.setItem(i, j, QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
-        
- 
+
 
 app=QtWidgets.QApplication([])
 formulario=uic.loadUi("pyForm/formulario.ui")
@@ -135,7 +150,7 @@ formulario.pushButton_2.clicked.connect(chama_segunda_tela)
 segunda_tela.pushButton.clicked.connect(gerar_pdf)
 segunda_tela.pushButton_2.clicked.connect(excluir_dados)
 segunda_tela.pushButton_3.clicked.connect(editar_dados)
-
+tela_editar.pushButton.clicked.connect(salvar_dados_editados)
 formulario.show()
 app.exec()
 
