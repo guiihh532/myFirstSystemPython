@@ -8,6 +8,29 @@ banco = mysql.connector.connect(
     passwd="pikapau10",
     database="cadastro_produto"
 )
+
+def editar_dados():
+    print("teste")
+    tela_editar.show()
+    linha = segunda_tela.tableWidget.currentRow()
+
+    cursor = banco.cursor()
+    cursor.execute("SELECT id FROM produtos")
+    dados_lidos = cursor.fetchall()
+    valor_id = dados_lidos[linha][0]
+    cursor.execute("SELECT * FROM produtos WHERE id="+ str(valor_id))
+    produto = cursor.fetchall()
+
+    tela_editar.lineEdit.setText(str(produto[0][0]))
+    tela_editar.lineEdit_2.setText(str(produto[0][1]))
+    tela_editar.lineEdit_3.setText(str(produto[0][2]))
+    tela_editar.lineEdit_4.setText(str(produto[0][3]))
+    tela_editar.lineEdit_5.setText(str(produto[0][4]))
+
+    
+    print(produto[0][2])
+
+
 def excluir_dados():
     linha = segunda_tela.tableWidget.currentRow()
     segunda_tela.tableWidget.removeRow(linha)
@@ -106,10 +129,12 @@ def chama_segunda_tela() :
 app=QtWidgets.QApplication([])
 formulario=uic.loadUi("pyForm/formulario.ui")
 segunda_tela=uic.loadUi("pyForm/ListaProdutos.ui")
+tela_editar=uic.loadUi("pyForm/editarProdutos.ui")
 formulario.pushButton.clicked.connect(funcao_principal)
 formulario.pushButton_2.clicked.connect(chama_segunda_tela)
 segunda_tela.pushButton.clicked.connect(gerar_pdf)
 segunda_tela.pushButton_2.clicked.connect(excluir_dados)
+segunda_tela.pushButton_3.clicked.connect(editar_dados)
 
 formulario.show()
 app.exec()
