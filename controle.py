@@ -22,7 +22,6 @@ def editar_dados():
     cursor.execute("SELECT * FROM produtos WHERE id="+ str(valor_id))
     produto = cursor.fetchall()
     tela_editar.show()
-
     valor_idd = valor_id
 
     tela_editar.lineEdit.setText(str(produto[0][0]))
@@ -30,8 +29,7 @@ def editar_dados():
     tela_editar.lineEdit_3.setText(str(produto[0][2]))
     tela_editar.lineEdit_4.setText(str(produto[0][3]))
     tela_editar.lineEdit_5.setText(str(produto[0][4]))
-
-
+    
 
 def salvar_dados_editados():
     #Pega numero do ID
@@ -139,7 +137,7 @@ def chama_segunda_tela() :
     for i in range(0, len(dados_lidos)):
         for j in range (0, 5):
             segunda_tela.tableWidget.setItem(i, j, QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
-            
+
 
 
 app=QtWidgets.QApplication([])
